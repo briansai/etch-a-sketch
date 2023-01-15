@@ -1,3 +1,34 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+}
+
+.board {
+  box-shadow: 0 0 50px #ccc;
+  margin: 0 auto;
+  width: 500px;
+  height: 500px;
+}
+
 div[class*='row'] {
   display: flex;
+}
+
+div[class*='square'] {
+  width: 7.8px;
+  height: 7.8px;
+}
+
+div[class*='square']:hover {
+  background-color: black;
+  cursor: auto;
 }

@@ -1,11 +1,10 @@
 import { DOMManipulation, Grid } from './modules.js';
 
-let newBoard = new Grid(64);
-
-// *Figure out what you did wrong here brian
-const domBoard = new DOMManipulation();
-const board = domBoard.createEl('div', 'board');
-
-const p = domBoard.appendTo('body', board);
+const newBoard = new Grid(64);
+const newManipulation = new DOMManipulation();
+const board = newManipulation.createEl('div', 'board');
+const main = newManipulation.createEl('div', 'main');
+newManipulation.appendTo('body', main);
+newManipulation.appendTo('.main', board);
 
 newBoard.putGridOnBoard();

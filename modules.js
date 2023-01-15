@@ -23,7 +23,7 @@ class Grid {
       for (let x = 1; x <= this.squareNum; x++) {
         const newDiv = new DOMManipulation();
         const square = newDiv.createEl('div', ` .square-${x}`);
-        square.textContent = x;
+
         newDiv.appendTo(`.row-${y}`, square);
       }
     }
