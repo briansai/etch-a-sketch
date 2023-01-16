@@ -3,15 +3,7 @@
 class Grid {
   constructor(squareNum) {
     this.squareNum = squareNum;
-  }
-
-  createGrid() {
-    let arr = [];
-    const num = this.squareNum;
-    for (let x = 0; x < num; x++) {
-      arr.push([...Array(num).fill({ rgb: '255,255,255' })]);
-    }
-    return arr;
+    this.mousedown = false;
   }
 
   putGridOnBoard() {
@@ -22,17 +14,31 @@ class Grid {
 
       for (let x = 1; x <= this.squareNum; x++) {
         const newDiv = new DOMManipulation();
-        const square = newDiv.createEl('div', ` .square-${x}`);
+        const square = newDiv.createEl('div', ` square-${x}`);
+
+        square.addEventListener('mouseover', this.fillSquare);
 
         newDiv.appendTo(`.row-${y}`, square);
       }
     }
+  }
+
+  fillSquare(e) {
+    const path = e.path;
+    const classes = `.${path[1].className} .${path[0].className.trim()}`;
+    const square = document.querySelector(classes);
+    square.style.background = 'black';
   }
 }
 
 // DOM manipulating class
 
 class DOMManipulation {
+  appendTo(parent, appendItem) {
+    const parentEl = this.selectEl(parent);
+    parentEl.append(appendItem);
+  }
+
   createEl(el, className) {
     const element = document.createElement(el);
     element.className = className;
@@ -40,13 +46,12 @@ class DOMManipulation {
   }
 
   removeElByClass(className) {
-    const elToRemove = document.querySelector(`${className}`);
+    const elToRemove = this.selectEl(`${className}`);
     elToRemove.remove();
   }
 
-  appendTo(parent, appendItem) {
-    const parentEl = document.querySelector(parent);
-    parentEl.append(appendItem);
+  selectEl(item) {
+    return document.querySelector(item);
   }
 }
 
