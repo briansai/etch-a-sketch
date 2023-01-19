@@ -7,6 +7,10 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .main {
   display: flex;
   align-items: center;
@@ -15,9 +19,34 @@ html {
   display: flex;
 }
 
+.slider {
+  text-align: center;
+  -webkit-appearance: none;
+  text-align: center;
+  width: 33%;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider-text {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.slider-main {
+  width: 75%;
+}
+
 .board {
   box-shadow: 0 0 50px #ccc;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   width: 500px;
   height: 500px;
 }
